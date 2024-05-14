@@ -1,18 +1,19 @@
-import { useFormik } from "formik";
-import React from "react";
-import { object, ref, string } from "yup";
+import { useFormik } from 'formik';
+import { object, string } from 'yup';
 const STRING_TYPE = string();
 
+// make a separate file
 interface IContactForm {
   name: string;
   email: string;
   password: string;
 }
 
+// make a separate file
 export const CONTACT_FORM = () =>
   object({
-    name: STRING_TYPE.required("Required name"),
-    email: STRING_TYPE.required("Required email").email("Enter valid email"),
+    name: STRING_TYPE.required('Required name'),
+    email: STRING_TYPE.required('Required email').email('Enter valid email'),
     // password: STRING_TYPE.required("Please enter a password")
     // .min(8, "Password must be at least 8 characters")
     // .max(30, "Max 30 characters")
@@ -25,9 +26,9 @@ const ContactForm = () => {
 
   const formik = useFormik<IContactForm>({
     initialValues: {
-      name: "",
-      email: "",
-      password: "",
+      name: '',
+      email: '',
+      password: '',
     },
     validationSchema: CONTACT_FORM(),
     onSubmit: handleClick,
